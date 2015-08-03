@@ -56,7 +56,7 @@ tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 # We will be running configure and make in this directory
 cd $WORKSPACE/$NAME-$VERSION
 # Note that $SOFT_DIR is used as the target installation directory.
-./configure --prefix $SOFT_DIR
+./configure --with-shared --prefix $SOFT_DIR
 
 # The build nodes have 8 core jobs. jobs are blocking, which means you can build with at least 8 core parallelism.
 # this might cause instability in the builds, so it's up to you.

@@ -26,8 +26,8 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION."
 setenv       NCURSES_VERSION       $VERSION
 setenv       NCURSES_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(ncurses_DIR)/lib
-prepend-path GCC_INCLUDE_DIR   $::env(ncurses_DIR)/include
+prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
+prepend-path GCC_INCLUDE_DIR   $::env(NCURSES_DIR)/include
 MODULE_FILE
 ) > modules/$VERSION
 

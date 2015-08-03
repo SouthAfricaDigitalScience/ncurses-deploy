@@ -1,3 +1,5 @@
+[![Build Status](http://ci.sagrid.ac.za:8080/buildStatus/icon?job=ncurses-deploy)](http://ci.sagrid.ac.za:8080/job/ncurses-deploy)
+
 # ncurses-devel README
 
 This is the repository containing the build scripts for Jenkins to integrate ncurses into the CVMFS repository.

@@ -1,4 +1,4 @@
-![BuildStatus](http://ci.sagrid.ac.za:8080/job/ncurses-deploy/badge/icon)
+![BuildStatus](http://ci.sagrid.ac.za/job/ncurses-deploy/badge/icon)
 
 # ncurses-devel README
 

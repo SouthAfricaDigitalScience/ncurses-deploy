@@ -22,17 +22,15 @@ module-whatis   "$NAME $VERSION."
 setenv       NCURSES_VERSION       $VERSION
 setenv       NCURSES_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
-prepend-path GCC_INCLUDE_DIR   $::env(NCURSES_DIR)/include
+prepend-path  PATH             $::env(NCURSES_DIR)/bin
 MODULE_FILE
 ) > modules/${VERSION}
 
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
 cp modules/${VERSION} ${LIBRARIES_MODULES}/${NAME}
 
-module add list
-
 module unload ci
 
 module add ci
 module avail # should have ncurses
-module add ncurses
+module add ${NAME}

@@ -7,7 +7,16 @@ module add deploy
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-./configure  --with-shared --prefix ${SOFT_DIR}
+CPPFLAGS='-P' CFLAGS='-fPIC' ./configure \
+--with-shared \
+--with-termlib \
+--with-ticlib \
+--enable-sp-funcs \
+--enable-ext-colors \
+--enable-ext-putwin \
+--enable-tcap-names \
+--enable-interop \
+--prefix=${SOFT_DIR}
 make install
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
 
@@ -28,3 +37,7 @@ setenv       NCURSES_DIR      $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(A
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+module purge
+
+module add deploy
+module avail ${NAME}

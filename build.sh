@@ -10,9 +10,7 @@
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
 # We provide the base module which all jobs need to get their environment on the build slaves
-module load ci
-
-
+module add ci
 # Next, a bit of verbose description of the build environment. This is useful when debugging initial builds and you
 # may want to remove it later.
 
@@ -66,8 +64,15 @@ tar -xvzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 # We will be running configure and make in this directory
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # Note that $SOFT_DIR is used as the target installation directory.
-./configure --with-shared --prefix ${SOFT_DIR}
+CPPFLAGS='-P' CFLAGS='-fPIC' ./configure \
+--with-shared \
+--with-termlib \
+--with-ticlib \
+--enable-sp-funcs \
+--enable-ext-colors \
+--enable-ext-putwin \
+--enable-tcap-names \
+--enable-interop \
+--prefix=${SOFT_DIR}
 
-# The build nodes have 8 core jobs. jobs are blocking, which means you can build with at least 8 core parallelism.
-# this might cause instability in the builds, so it's up to you.
 make -j 2

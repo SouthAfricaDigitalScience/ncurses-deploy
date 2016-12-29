@@ -1,6 +1,6 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
-module load ci
+module add ci
 echo ""
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
@@ -20,7 +20,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       NCURSES_VERSION       $VERSION
-setenv       NCURSES_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       NCURSES_DIR           $::env(SOFT_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
 prepend-path  PATH             $::env(NCURSES_DIR)/bin
 MODULE_FILE

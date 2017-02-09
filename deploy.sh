@@ -7,6 +7,8 @@ module add deploy
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
+# first, clean the previous config
+make distclean
 CPPFLAGS='-P' CFLAGS='-fPIC' ./configure \
 --with-shared \
 --with-termlib \
@@ -18,6 +20,7 @@ CPPFLAGS='-P' CFLAGS='-fPIC' ./configure \
 --enable-interop \
 --prefix=${SOFT_DIR}
 make install
+
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
 
 # Now, create the module file for deployment
@@ -33,11 +36,14 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/ncurses-deploy"
 setenv       NCURSES_VERSION       $VERSION
-setenv       NCURSES_DIR      $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       NCURSES_DIR                 $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
+prepend-path PATH                           $::env(NCURSES_DIR)/bin
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
 module purge
 
 module add deploy
+# Check the module
 module avail ${NAME}
+module add  ${NAME}/${VERSION}

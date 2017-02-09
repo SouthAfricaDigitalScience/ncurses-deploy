@@ -2,7 +2,7 @@
 
 # ncurses-devel README
 
-This is the repository containing the build scripts for Jenkins to integrate ncurses into the CVMFS repository. This builds versions :
+This is the repository containing the build scripts for Jenkins to integrate [ncurses](https://www.gnu.org/software/ncurses/) into the CVMFS repository. This builds versions :
 
   1. V 5.9
   1. V 6.0
@@ -52,3 +52,5 @@ If all of the tests have passed, the application can be recompiled with the depl
 If you have a legitimate error, or need support, please [open an issue](../../issues)
 
 Otherwise, [open a topic on the forum](https://discourse.sci-gaia.eu)
+
+# Citing

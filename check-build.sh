@@ -20,9 +20,9 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       NCURSES_VERSION       $VERSION
-setenv       NCURSES_DIR           $::env(SOFT_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       NCURSES_DIR                  /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
-prepend-path  PATH             $::env(NCURSES_DIR)/bin
+prepend-path  PATH                          $::env(NCURSES_DIR)/bin
 MODULE_FILE
 ) > modules/${VERSION}
 
@@ -33,4 +33,5 @@ module unload ci
 
 module add ci
 module avail # should have ncurses
-module add ${NAME}
+# test the module
+module add ${NAME}/#{VERSION}

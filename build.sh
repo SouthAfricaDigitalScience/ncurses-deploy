@@ -75,4 +75,4 @@ CPPFLAGS='-P' CFLAGS='-fPIC' ./configure \
 --enable-interop \
 --prefix=${SOFT_DIR}
 
-make -j 2
+make

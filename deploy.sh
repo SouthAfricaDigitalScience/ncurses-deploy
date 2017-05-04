@@ -1,4 +1,17 @@
 #!/bin/bash -e
+# Copyright 2016 C.S.I.R. Meraka Institute
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 echo ${SOFT_DIR}
@@ -21,7 +34,7 @@ CPPFLAGS='-P' CFLAGS='-fPIC' ./configure \
 --prefix=${SOFT_DIR}
 make install
 
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+mkdir -p ${LIBRARIES}/${NAME}
 
 # Now, create the module file for deployment
 (
@@ -40,7 +53,7 @@ setenv       NCURSES_DIR                 $::env(CVMFS_DIR)/$::env(SITE)/$::env(O
 prepend-path LD_LIBRARY_PATH   $::env(NCURSES_DIR)/lib
 prepend-path PATH                           $::env(NCURSES_DIR)/bin
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+) > ${LIBRARIES}/${NAME}/${VERSION}
 module purge
 
 module add deploy

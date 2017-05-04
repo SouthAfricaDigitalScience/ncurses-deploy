@@ -1,10 +1,10 @@
-[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=ncurses-deploy)](https://ci.sagrid.ac.za/job/ncurses-deploy)
+[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=ncurses-deploy)](https://ci.sagrid.ac.za/job/ncurses-deploy) [![DOI](https://zenodo.org/badge/40120092.svg)](https://zenodo.org/badge/latestdoi/40120092)
 
-# ncurses-devel README
+# ncurses-deploy README
 
 This is the repository containing the build scripts for Jenkins to integrate [ncurses](https://www.gnu.org/software/ncurses/) into the CVMFS repository. This builds versions :
 
-  1. V 5.9
+  1. ~~V 5.9~~
   1. V 6.0
 
 
@@ -54,3 +54,7 @@ If you have a legitimate error, or need support, please [open an issue](../../is
 Otherwise, [open a topic on the forum](https://discourse.sci-gaia.eu)
 
 # Citing
+
+Cite as :
+
+Bruce Becker. (2017). SouthAfricaDigitalScience/ncurses-deploy: CODE-RADE Foundation Release 3 - ncurses [Data set]. Zenodo. http://doi.org/10.5281/zenodo.571432

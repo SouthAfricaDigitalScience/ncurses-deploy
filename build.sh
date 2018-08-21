@@ -40,7 +40,7 @@ if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ]
   echo "seems like this is the first build - let's get the source"
   mkdir -p ${SRC_DIR}
 # use local mirrors if you can. Remember - UFS has to pay for the bandwidth!
-  wget http://mirror.ufs.ac.za/gnu/gnu/${NAME}/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
+  wget http://mirror.ufs.ac.za/gnu/${NAME}/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
